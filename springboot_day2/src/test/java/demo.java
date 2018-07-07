@@ -1,9 +1,8 @@
 import com.ruizhiqi.entity.User;
 import com.ruizhiqi.service.UserService;
-import com.ruizhiqi.service.UserServiceImpl;
 import org.junit.Test;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 public class demo {
 
@@ -18,6 +17,22 @@ public class demo {
             }
         }
         System.out.println(sb);
+    }
+
+
+    @Resource
+    private UserService userService;
+
+    @Test
+    public void test2() {
+
+
+        if (userService.showAll() != null) {
+            for (User user : userService.showAll()) {
+                System.out.println(user);
+            }
+        }
+        System.out.println("user为空");
     }
 
 
@@ -74,7 +89,7 @@ public class demo {
 
     }*/
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         UserService userService = new UserServiceImpl();
         List<User> users = userService.showAll();
         if (users != null) {
@@ -82,12 +97,12 @@ public class demo {
                 System.out.println(user);
             }
         }
-    }
+    }*/
 
 
 
 
-/*   @Test
+ /*  @Test
     public void r1(){
         List<User> users = userService.showAll();
         if(users != null){
