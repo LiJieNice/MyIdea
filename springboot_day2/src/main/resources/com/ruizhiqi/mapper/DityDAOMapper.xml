@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruizhiqi.dao.DityDAO">
+
+
+    <select id="selectByUser" parameterType="com.ruizhiqi.entity.Dity" resultType="Dity">
+        select * from t_dity
+        <where>
+            <if test="name!=null">
+                name=#{name}
+            </if>
+            <if test="dityType!=null">
+                and dityType=#{dityType}
+            </if>
+            <if test="price!=null">
+                and price=#{price}
+            </if>
+            <if test="city!=null">
+                and city=#{city}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="select" resultType="Dity">
+        select * from t_dity
+    </select>
+
+
+</mapper>

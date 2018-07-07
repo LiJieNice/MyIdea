@@ -39,7 +39,7 @@
     <select id="slectByIds" resultType="User">
         select * from t_user where id in
 
-        <!-- 数组用array   list集合用list -->
+        <!-- 数组用array   list集合用list 不用按照类型的属性去写-->
 
         <!-- open代表是头（ close代表的是）  separator表示以,分割 -->
         <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
@@ -49,6 +49,8 @@
 
 
     <insert id="addList">
+
+        <!--list集合默认的就是list不用按照他们的属性来选择-->
         <foreach collection="list" item="item" index="index" open="" separator=";">
             insert into t_user values(#{item.id},#{item.name,jdbcType=VARCHAR},#{item.age,jdbcType=INTEGER})
         </foreach>
