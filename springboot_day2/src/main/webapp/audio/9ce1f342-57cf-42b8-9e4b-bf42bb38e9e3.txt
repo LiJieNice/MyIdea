@@ -1,0 +1,11 @@
+long是32位的，在数据库中可以用bigint或者numeric(x,y)，x是长度，y是小数点后面的位数
+
+byte[] b = str.getBytes(unicode); // 从字符串中获得字节
+System.out.println(unicode:+b.length); //unicode 占 4个字节！！
+b=str.getBytes(utf-8);
+System.out.println(utf-8:+b.length); //utf-8汉字英文和中文字符一般占3个字节！！数字和字符一般占1个字节,
+str = new String(b);
+System.out.println(str.getBytes(unicode).length);
+} catch (Exception e) {
+e.printStackTrace();}}}经过上述的测试，得出下列结果：
+utf-8汉字英文和中文字符一般占3个字节！！数字和英文字符一般占1个字节,

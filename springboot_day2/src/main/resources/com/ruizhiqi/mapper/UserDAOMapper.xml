@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruizhiqi.dao.UserDAO">
+
+
+    <select id="showAll" resultType="com.ruizhiqi.entity.User">
+        select * from t_user
+    </select>
+
+    <!--
+        <insert id="insert" parameterType="com.ruizhiqi.entity.User">
+            insert into t_user values(#{id},#{name},#{age})
+        </insert>
+
+
+
+
+
+        <update id="update" parameterType="com.ruizhiqi.entity.User">
+            update t_user set name=#{name},age=#{age} where id=#{id}
+        </update>
+
+    -->
+
+
+    <!--  要做foreach的对象，作为入参时，List<?>对象默认用list代替作为键，数组对象有array代替作为键，Map对象没有默认的键。 -->
+    <update id="updateHashMap">
+        <foreach collection="list" item="item" index="index" open="" separator=";" close=";">
+            update t_user set name=#{item.name,jdbcType=VARCHAR},age=#{item.age,jdbcType=INTEGER} where id=#{item.id}
+        </foreach>
+    </update>
+
+    <!-- ${parm}传递的参数会被当成sql语句中的一部分
+         #{parm}传入的数据都当成一个字符串，
+     -->
+
+
+    <!-- 多个参数就不用写parameterType="" -->
+    <select id="slectByIds" resultType="User">
+        select * from t_user where id in
+
+        <!-- 数组用array   list集合用list -->
+
+        <!-- open代表是头（ close代表的是）  separator表示以,分割 -->
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <insert id="addList">
+        <foreach collection="list" item="item" index="index" open="" separator=";">
+            insert into t_user values(#{item.id},#{item.name,jdbcType=VARCHAR},#{item.age,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
+</mapper>
