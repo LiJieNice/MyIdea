@@ -36,6 +36,39 @@ public class demo {
     }
 
 
+    @Test
+    public void t3() {
+        String str = "sd,";
+        System.out.println(str.length());
+        //str.substring(0, str.length()-1)   从下标0开始截取到str.length()-1个字符
+        String substring = str.substring(0, str.length() - 1);
+        System.out.println(substring);
+
+        //从下标第几个字符串开始截取
+        System.out.println(str.substring(1));
+    }
+
+/*
+    @Test
+    public void t3(){
+        String picPath =  "C:\\cc\\download.jpg";
+        fileItem fileItem = createFileItem(picPath);
+
+        MultipartFile mfile = new CommonsMultipartFile(fileItem);
+    }
+
+
+    private static MultipartFile getMulFileByPath(String picPath) {
+
+        FileItem fileItem = createFileItem(picPath);
+
+        MultipartFile mfile = new CommonsMultipartFile(fileItem);
+
+        return mfile;
+
+    }*/
+
+
 
    /* @Test
     public void t2(){

@@ -2,6 +2,7 @@ package com.ruizhiqi.service;
 
 import com.ruizhiqi.application;
 import com.ruizhiqi.entity.User;
+import com.ruizhiqi.util.ID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,4 +30,12 @@ public class UserServiceImplTest {
 
         //System.out.println("user为空");
     }
+
+    @Test
+    public void t3() {
+        long id = ID.getId();
+        System.out.println(id);
+    }
+
+
 }

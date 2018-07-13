@@ -369,6 +369,8 @@ public class TestUser {
                             //int height = bi.getHeight();//获取高度
                             int width = bi.getWidth();//获取宽度   //1040*640是大图40个字符  单图370*245占44个字符    是三图370*245占70个字符
                             //System.out.println("宽：" + width);
+
+
                             if (width == 370 && titleLength <= 44) {
 
                                 System.out.println(jp.getTitle() + jp.getContents() + imgPaths[0] + jp.getImgContents() + "单图=============");

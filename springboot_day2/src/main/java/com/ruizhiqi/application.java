@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.ruizhiqi.dao")
 public class application {
     public static void main(String[] args) {
+
         SpringApplication.run(application.class, args);
     }
 }
