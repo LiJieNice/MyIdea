@@ -1,6 +1,7 @@
 package com.ruizhiqi.controller;
 
 
+import com.ruizhiqi.code.UserList;
 import com.ruizhiqi.entity.User;
 import com.ruizhiqi.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -126,6 +127,15 @@ public class UserController {
         return "OK";
 
 
+    }
+
+
+    @RequestMapping("/list")
+    public void ceshi(UserList users) {
+        List<User> users1 = users.getUsers();
+        for (User user : users1) {
+            System.out.println(user);
+        }
     }
 
 

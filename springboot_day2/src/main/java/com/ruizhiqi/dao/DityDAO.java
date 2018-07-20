@@ -10,4 +10,7 @@ public interface DityDAO {
     List<Dity> selectByUser(Dity dity);
 
     List<Dity> select();
+
+    //添加
+    void add(Dity dity);
 }

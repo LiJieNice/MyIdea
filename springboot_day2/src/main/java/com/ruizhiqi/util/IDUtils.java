@@ -1,5 +1,6 @@
 package com.ruizhiqi.util;
 
+
 import org.junit.Test;
 
 import java.util.HashSet;
@@ -70,6 +71,8 @@ public class IDUtils {
 
 
     //public static void main(String[] args) {
+
+
     @Test
     public void t4() {
         int m = 0;

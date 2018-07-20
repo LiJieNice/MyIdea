@@ -26,5 +26,9 @@
         select * from t_dity
     </select>
 
+    <insert id="add" parameterType="Dity">
+        insert into t_dity values(#{id},#{name},#{dityType},#{price},#{city})
+    </insert>
+
 
 </mapper>

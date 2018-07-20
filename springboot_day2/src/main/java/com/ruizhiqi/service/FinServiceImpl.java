@@ -20,7 +20,6 @@ public class FinServiceImpl implements FinService {
     @Override
     public void add(Fin fin) {
         String id = UUID.randomUUID().toString().replaceAll("-", "");
-
         fin.setId(id);
 
         finDAO.add(fin);

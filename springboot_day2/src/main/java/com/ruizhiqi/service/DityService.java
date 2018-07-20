@@ -11,4 +11,6 @@ public interface DityService {
     List<Dity> selectByUser(Dity dity);
 
     List<Dity> select();
+
+    void add(Dity dity);
 }

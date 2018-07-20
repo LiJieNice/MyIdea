@@ -324,7 +324,7 @@ public class TestUser {
         list.add(jp3);
 
 
-        ArrayList<String> titles = new ArrayList<>();
+        /*ArrayList<String> titles = new ArrayList<>();
         ArrayList<String> contentss = new ArrayList<>();
 
         for (Jp jp : list) {
@@ -332,10 +332,28 @@ public class TestUser {
             String contents = jp.getContents();
             titles.add(title);
             contentss.add(contents);
+        }*/
+        //现在要做的是要把标题，标题内容和图片，图片内容做组合
+        /*for (Jp jp : list) {
+
+            jp.getTitle()+jp.getContents();
+            for (Jp jp4 : list) {
+                jp4.getImgContents()+jp4.getImgPath();
+            }
+        }*/
+
+        for (int i = 0; i < list.size(); i++) {
+            //标题加内容
+            String titleContent = list.get(i).getTitle() + list.get(i).getContents();
+            for (int j = 0; j < list.size(); j++) {
+                String chuang = titleContent + list.get(j).getImgContents() + list.get(j).getImgPath();
+            }
         }
+
+
         //这是图片  把图片放入一个对象中，因为上传的图片不仅仅是一张，把三张小图放在一块归为一类
 
-
+        //这个就时遍历多少次  没什么用
         for (int i = 0; i < list.size(); i++) {
 
             //是标题和标题信息一一对应
@@ -349,7 +367,7 @@ public class TestUser {
 
 
                 //得到标题的长度
-                System.out.println("标题的长度：" + titleLength);
+                //System.out.println("标题的长度：" + titleLength);
 
 
                 //计算图图片的路径
@@ -369,8 +387,6 @@ public class TestUser {
                             //int height = bi.getHeight();//获取高度
                             int width = bi.getWidth();//获取宽度   //1040*640是大图40个字符  单图370*245占44个字符    是三图370*245占70个字符
                             //System.out.println("宽：" + width);
-
-
                             if (width == 370 && titleLength <= 44) {
 
                                 System.out.println(jp.getTitle() + jp.getContents() + imgPaths[0] + jp.getImgContents() + "单图=============");
@@ -393,23 +409,6 @@ public class TestUser {
                                 img += imgPaths[j] + ",";
                             }
                         }
-
-
-
-                        /*
-                        这个方法去除最后一个字符串
-                        * img.substring(0,img.length()-1) + jp.getImgContents()
-                        *
-                        * */
-                            /*for (String imgPath : imgPaths) {
-                                img += imgPath;
-                            }*/
-                        //FileInputStream in = new FileInputStream(img);
-                        //BufferedImage bi = ImageIO.read(in);// 通过ImageIO读取输入流来获取一个BufferedImage对象
-                        //int height = bi.getHeight();//获取高度
-                        //int width = bi.getWidth();//获取宽度   //1040*640是大图40个字符  单图370*245占44个字符    是三图370*245占70个字符
-                        //System.out.println("高：" + height);
-                        //System.out.println("宽：" + width);
                         System.out.println(jp.getTitle() + jp.getContents() + img.substring(0, img.length() - 1) + jp.getImgContents() + "三图=============");
                     }
                 }
@@ -419,4 +418,55 @@ public class TestUser {
     }
 
 
+    @Test
+    public void s11() throws IOException {
+
+        String id = UUID.randomUUID().toString().replaceAll("-", "");
+
+        Jp jp1 = new Jp(id, "标题1", "标题内容1", "这是图片内容one", new String[]{"C:\\cc\\3.jpg"}, "www.baidu.com", "hehe", "xixi");
+        Jp jp2 = new Jp(id, "标题2", "标题内容2", "这是图片内容two", new String[]{"C:\\cc\\2.jpg"}, "www.baidu.com", "hehe", "xixi");
+        Jp jp3 = new Jp(id, "标题3", "标题内容3", "这是图片内容three", new String[]{"C:\\cc\\download.jpg", "C:\\cc\\2.jpg", "C:\\cc\\3.jpg"}, "www.baidu.com", "hehe", "xixi");
+        Jp jp4 = new Jp(id, "标题4", "标题内容4", null, null, null, null, null);
+        ArrayList<Jp> list = new ArrayList<>();
+
+        list.add(jp1);
+        list.add(jp2);
+        list.add(jp3);
+        list.add(jp4);
+
+
+        //标题加内容  自由组合
+
+        for (Jp jp : list) {
+            String titleContent = jp.getTitle() + jp.getContents();
+
+            for (Jp jps : list) {
+                String path = "";
+                if (jps.getImgPath() != null) {  //先判断是否有图片
+                    String[] imgPath = jps.getImgPath();   //这是一数组
+
+                    if (imgPath.length == 1) {
+                        FileInputStream fileInputStream = new FileInputStream(imgPath[0]);
+                        BufferedImage read = ImageIO.read(fileInputStream);
+                        int width = read.getWidth(); //获取宽度
+                        if (width == 370 && jp.getContents().length() <= 44) {  //判断得到这是一个单图，并且字段小于44
+                            System.out.println(titleContent + jps.getImgContents() + imgPath[0]);
+
+                        } else {
+                            System.out.println(titleContent + jps.getImgContents() + imgPath[0]);  //大图
+                        }
+                    } else {
+                        FileInputStream fileInputStream = new FileInputStream(imgPath[0]);  //三图
+                        BufferedImage read = ImageIO.read(fileInputStream);
+                        int width = read.getWidth(); //获取宽度
+
+                        for (String img : imgPath) {
+                            path += img + ",";
+                        }
+                        System.out.println(titleContent + jps.getImgContents() + path.substring(0, path.length() - 1));
+                    }
+                }
+            }
+        }
+    }
 }

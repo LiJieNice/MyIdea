@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -27,5 +28,12 @@ public class DityServiceImpl implements DityService {
     public List<Dity> select() {
         //return dityService.select();
         return dityDAO.select();
+    }
+
+    @Override
+    public void add(Dity dity) {
+        String id = UUID.randomUUID().toString().replaceAll("-", "");
+        dity.setId(id);
+        dityDAO.add(dity);
     }
 }

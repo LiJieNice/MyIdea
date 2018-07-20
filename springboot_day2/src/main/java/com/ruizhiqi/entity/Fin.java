@@ -2,38 +2,32 @@ package com.ruizhiqi.entity;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Arrays;
-
 public class Fin {
 
     private String id;
-    private String title;
-    private String contents;
-    private String imgContents;
-    private String[] imgUrls;
-    private String landingUrl;
-    private String brandName;
-    private String logoUrl;
-    private String oldName;
-    private String newName;
-    private MultipartFile[] files;
+    private String creativeType;  //创意状态
 
-    @Override
-    public String toString() {
-        return "Fin{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", contents='" + contents + '\'' +
-                ", imgContents='" + imgContents + '\'' +
-                ", imgUrls=" + (imgUrls == null ? null : Arrays.asList(imgUrls)) +
-                ", landingUrl='" + landingUrl + '\'' +
-                ", brandName='" + brandName + '\'' +
-                ", logoUrl='" + logoUrl + '\'' +
-                ", oldName='" + oldName + '\'' +
-                ", newName='" + newName + '\'' +
-                ", files=" + (files == null ? null : Arrays.asList(files)) +
-                '}';
-    }
+    private String title;//标题
+    private String contents;//标题内容
+
+    private String imgContents;//图片信息
+    private String imgUrls;//图片存放的路径
+
+    private String landingUrl;//落地页链接
+    private String brandName;//品牌名称
+    private String logoUrl;//logo图片存放的路径
+
+    private String oldName;//老名字
+    private String newName;//新名字
+    private String oldLogoName; //logo老名称
+    private String newLogoName; //logo新名称
+
+    private MultipartFile[] files;//上传图片的格式
+
+    private MultipartFile file;  //logo图片  单独划分出来，这样不乱
+
+
+
 
     public String getId() {
         return id;
@@ -41,6 +35,14 @@ public class Fin {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCreativeType() {
+        return creativeType;
+    }
+
+    public void setCreativeType(String creativeType) {
+        this.creativeType = creativeType;
     }
 
     public String getTitle() {
@@ -67,11 +69,11 @@ public class Fin {
         this.imgContents = imgContents;
     }
 
-    public String[] getImgUrls() {
+    public String getImgUrls() {
         return imgUrls;
     }
 
-    public void setImgUrls(String[] imgUrls) {
+    public void setImgUrls(String imgUrls) {
         this.imgUrls = imgUrls;
     }
 
@@ -115,6 +117,22 @@ public class Fin {
         this.newName = newName;
     }
 
+    public String getOldLogoName() {
+        return oldLogoName;
+    }
+
+    public void setOldLogoName(String oldLogoName) {
+        this.oldLogoName = oldLogoName;
+    }
+
+    public String getNewLogoName() {
+        return newLogoName;
+    }
+
+    public void setNewLogoName(String newLogoName) {
+        this.newLogoName = newLogoName;
+    }
+
     public MultipartFile[] getFiles() {
         return files;
     }
@@ -123,13 +141,22 @@ public class Fin {
         this.files = files;
     }
 
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
     public Fin() {
 
     }
 
-    public Fin(String id, String title, String contents, String imgContents, String[] imgUrls, String landingUrl, String brandName, String logoUrl, String oldName, String newName, MultipartFile[] files) {
+    public Fin(String id, String creativeType, String title, String contents, String imgContents, String imgUrls, String landingUrl, String brandName, String logoUrl, String oldName, String newName, String oldLogoName, String newLogoName, MultipartFile[] files, MultipartFile file) {
 
         this.id = id;
+        this.creativeType = creativeType;
         this.title = title;
         this.contents = contents;
         this.imgContents = imgContents;
@@ -139,6 +166,9 @@ public class Fin {
         this.logoUrl = logoUrl;
         this.oldName = oldName;
         this.newName = newName;
+        this.oldLogoName = oldLogoName;
+        this.newLogoName = newLogoName;
         this.files = files;
+        this.file = file;
     }
 }

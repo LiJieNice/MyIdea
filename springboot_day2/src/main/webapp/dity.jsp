@@ -12,12 +12,12 @@
     <title>Title</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/dity/showDity" method="post">
-    商品名称：<input type="text" name="dity.name"><br/>
-    商品价格：<input type="text" name="dity.dityType"><br/>
-    商品类型：<input type="text" name="dity.price"><br/>
-    商品产地：<input type="text" name="dity.city"><br/>
-    <input type="submit" name="提交">
+<form action="${pageContext.request.contextPath}/dity/add" method="post">
+    商品名称：<input type="text" name="name" value="heh"><br/>
+    商品价格：<input type="text" name="dityType" value="heh"><br/>
+    商品：<input type="text" name="price" value="11.00"><br/> <%--这样就可以了，直接传double类型的数字--%>
+    商品产地：<input type="text" name="city" value="heh"><br/>
+    <input type="submit" value="提交">
 </form>
 </body>
 </html>

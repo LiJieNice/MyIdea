@@ -5,7 +5,7 @@
 
     <insert id="add" parameterType="com.ruizhiqi.entity.Fin">
         insert into t_final
-        values(#{id},#{title},#{contents},#{imgContents},#{imgurls},#{landingUrl},#{brandName},#{logoUrl},#{oldName},#{newName})
+        values(#{id},#{creativeType},#{title},#{contents},#{imgContents},#{imgurls},#{landingUrl},#{brandName},#{logoUrl},#{oldName},#{newName},#{oldLogoName},#{newLogoName})
     </insert>
 
 
